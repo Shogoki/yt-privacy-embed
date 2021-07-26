@@ -1,17 +1,27 @@
 <script lang="ts">
 	/* Based on Light YouTube Embeds by @labnol */
 	/* Web: https://www.labnol.org/ */
-	export let videoId: string = "AdNJ3fydeao";
-	export let thumbnail: string = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`; // Defaulting to fetch it from yt
-	export let embedOptions: string = "autoplay=1&rel=0"
+	import { onMount, tick } from 'svelte'; 
+	
+	export let videoid: string = "AdNJ3fydeao";
+	export let thumbnail: string; //= `https://i.ytimg.com/vi/${videoid}/hqdefault.jpg`; // Defaulting to fetch it from yt
+	export let embedoptions: string = "autoplay=1&rel=0"
+	export let title: string = "Video"
+	export let width = "400"
+	export let height = "200"
 	let enabled = false;
+
+	onMount(async () => {
+		await tick();
+		thumbnail = thumbnail ?? `https://i.ytimg.com/vi/${videoid}/hqdefault.jpg`
+  });
 
 </script>
 <svelte:options tag="privacy-yt-embed"></svelte:options>
 
-<div class="youtube-player" >
+<div class="youtube-player" style="width:{width}px; height: {height}px;" >
 	{#if enabled}
-	<iframe title="Video" src={`https://www.youtube-nocookie.com/embed/${videoId}?${embedOptions}`} frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+	<iframe  title="{title}" src={`https://www.youtube-nocookie.com/embed/${videoid}?${embedoptions}`} frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
 	{:else}
 	<div>
 		<img src={thumbnail} alt="thumbnail for Video" />
@@ -28,19 +38,9 @@
 
 <style>
 
-#main {
-  width: 100%;
-  max-width: 800px;
-  margin: 30px auto 20px;
-}
-#main p {
-  padding: 20px;
-  margin:20px 0;
-  background: lightyellow;
-}
+
 .youtube-player {
   position: relative;
-  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   max-width: 100%;
