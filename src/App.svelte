@@ -1,7 +1,7 @@
 <script lang="ts">
 	/* Based on Light YouTube Embeds by @labnol */
 	/* Web: https://www.labnol.org/ */
-	export let videoId: string = "ChGBcFtYdVA";
+	export let videoId: string = "AdNJ3fydeao";
 	export let thumbnail: string = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`; // Defaulting to fetch it from yt
 	export let embedOptions: string = "autoplay=1&rel=0"
 	let enabled = false;
@@ -11,7 +11,7 @@
 
 <div class="youtube-player" >
 	{#if enabled}
-	<iframe title="Video" src={`https://www.youtube.com/embed/${videoId}?${embedOptions}`} frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+	<iframe title="Video" src={`https://www.youtube-nocookie.com/embed/${videoId}?${embedOptions}`} frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
 	{:else}
 	<div>
 		<img src={thumbnail} alt="thumbnail for Video" />
