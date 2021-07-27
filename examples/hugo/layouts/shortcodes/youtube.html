@@ -1,2 +1,2 @@
 <script src="/assets/js/privacy-yt-embed.js" ></script>
-<privacy-yt-embed videoid="{{ .Get "id" }}"  {{ with .Get "thumbnail" }} thumbnail="{{ . }}"{{ end }} {{ with .Get "width" }} width="{{ . }}"{{ end }}{{ with .Get "height" }} heigth="{{ . }}"{{ end }} {{ with .Get "title" }} title="{{ . }}"{{ end }}></privacy-yt-embed>
+<privacy-yt-embed videoid="{{ .Get "id" }}"  {{ with .Get "thumbnail" }} thumbnail="{{ . }}"{{ end }} {{ with .Get "text" }} overlaytext="{{ . }}"{{ end }} {{ with .Get "width" }} width="{{ . }}"{{ end }}{{ with .Get "height" }} heigth="{{ . }}"{{ end }} {{ with .Get "title" }} title="{{ . }}"{{ end }}></privacy-yt-embed>
